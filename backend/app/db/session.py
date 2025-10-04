@@ -1,16 +1,30 @@
+# app/db/session.py
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
-from app.core.config import Settings
+from sqlalchemy.orm import sessionmaker, DeclarativeBase
+from app.core.config import settings
+
+class Base(DeclarativeBase):
+    pass
 
 engine = create_engine(
-    Settings.DATABASE_URL,
+    settings.DATABASE_URL,
     pool_pre_ping=True,
+    future=True,
 )
 
 SessionLocal = sessionmaker(
-    autocommit=False,
+    bind=engine,
     autoflush=False,
-    bind=engine
+    autocommit=False,
+    future=True,
 )
 
-Base = declarative_base()
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+def init_db():
+    Base.metadata.create_all(bind=engine)

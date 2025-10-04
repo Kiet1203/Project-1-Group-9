@@ -1,12 +1,20 @@
-# backend/app/core/config.py
-import os
 from pathlib import Path
-from dotenv import load_dotenv
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
-ENV_PATH = Path(__file__).resolve().parents[2] / ".env"
-load_dotenv(dotenv_path=ENV_PATH)
+BASE_DIR = Path(__file__).resolve().parents[2]
 
-class Settings:
-    PROJECT_NAME: str = "Project 1 API"
-    DATABASE_URL: str | None = os.getenv("DATABASE_URL")
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=str(BASE_DIR / ".env"),
+        extra="ignore"
+    )
 
+    DATABASE_URL: str
+
+    SECRET_KEY:str
+
+    GOOGLE_CLIENT_ID: str
+    GOOGLE_CLIENT_SECRET: str
+    GOOGLE_REDIRECT_URI: str
+
+settings = Settings()
