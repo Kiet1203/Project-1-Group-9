@@ -34,4 +34,3 @@ Repository này bao gồm backend FastAPI và frontend React + Vite + TailwindCS
    npm run dev
    ```
 3. Mở `http://localhost:5173` để xem giao diện. Khi dùng TailwindCSS, đảm bảo đã cấu hình PostCSS/Tailwind (cập nhật `package.json`, `tailwind.config.js`, v.v. nếu bổ sung).
-
