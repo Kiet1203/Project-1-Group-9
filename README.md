@@ -18,14 +18,10 @@ Repository này bao gồm backend FastAPI và frontend React + Vite + TailwindCS
    ```bash
    pip install -r backend/requirements.txt
    ```
-3. Cấu hình biến môi trường:
-   - Tạo file `backend/.env` (nếu chưa có) với nội dung mẫu:
-     ```env
-     DATABASE_URL=postgresql://user:password@host:port/dbname?sslmode=require
-     ```
-4. Chạy API server (từ thư mục gốc):
+3. Chạy API server (từ thư mục gốc):
    ```bash
-   uvicorn app.main:app --app-dir backend --reload
+   cd backend
+   uvicorn app.main:app --reload
    ```
 ## Thiết lập Frontend
 1. Cài đặt dependency:
@@ -38,4 +34,3 @@ Repository này bao gồm backend FastAPI và frontend React + Vite + TailwindCS
    npm run dev
    ```
 3. Mở `http://localhost:5173` để xem giao diện. Khi dùng TailwindCSS, đảm bảo đã cấu hình PostCSS/Tailwind (cập nhật `package.json`, `tailwind.config.js`, v.v. nếu bổ sung).
-
