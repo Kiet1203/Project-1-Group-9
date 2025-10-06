@@ -2,6 +2,14 @@
 import { Github, Chrome, Sparkles } from "lucide-react";
 import "../styles/login.css"
 
+const GoogleLogin = () => {
+  window.location.href = `${import.meta.env.VITE_API_BASE}/auth/google/login`
+}
+
+const GitHubLogin = () => {
+  window.location.href = `${import.meta.env.VITE_API_BASE}/auth/github/login`
+}
+
 export default function LoginPage() {
   return (
     <div className="login-page">
@@ -43,7 +51,7 @@ export default function LoginPage() {
             </p>
           </div>
           <div className="login-buttons">
-            <button className="login-btn google-btn">
+            <button onClick={GoogleLogin} className="login-btn google-btn">
               <div className="btn-shine" />
               <div className="btn-content">
                 <Chrome className="btn-icon" />
@@ -51,7 +59,7 @@ export default function LoginPage() {
               </div>
             </button>
 
-            <button className="login-btn github-btn">
+            <button onClick={GitHubLogin} className="login-btn github-btn">
               <div className="btn-shine" />
               <div className="btn-content">
                 <Github className="btn-icon" />
