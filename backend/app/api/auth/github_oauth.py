@@ -49,10 +49,13 @@ def github_login(request: Request):
     _set_oauth_map(request, oauth_map)
 
     params = {
-        "client_id": settings.GITHUB_CLIENT_ID,
-        "redirect_uri": redirect_uri,
-        "state": state,
-        "scope": "read:user user:email",
+        "client_id":settings.GITHUB_CLIENT_ID,
+        "redirect_uri":redirect_uri,
+        "state":state,
+        "scope":"read:user user:email",
+        "code_challenge":challenge,
+        "code_challenge_method":"S256",
+        "prompt":"consent"
     }
     if USE_PKCE:
         params.update({
