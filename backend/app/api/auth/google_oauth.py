@@ -78,16 +78,19 @@ async def google_callback(request: Request, db: Session = Depends(get_db)):
     print("CALLBACK code present:", bool(code), "| state:", state)
 
     if not code or not state:
-        raise HTTPException(400, "Thiếu code hoặc state")
+        # raise HTTPException(400, "Thiếu code hoặc state")
+        raise HTTPException(400 ,"Đăng nhập thất bại ")
 
     sess = request.session.get("oauth")
     print("SESSION OAUTH:", sess)
     if not sess or sess.get("state") != state:
-        raise HTTPException(400, "State không hợp lệ (không khớp session)")
+        # raise HTTPException(400, "State không hợp lệ (không khớp session)")
+        raise HTTPException(400 ,"Đăng nhập thất bại ")
 
     verifier = sess.get("verifier") if USE_PKCE else None
     if USE_PKCE and not verifier:
-        raise HTTPException(400, "Thiếu code_verifier (session/PKCE)")
+        # raise HTTPException(400, "Thiếu code_verifier (session/PKCE)")
+        raise HTTPException(400 ,"Đăng nhập thất bại ")
 
     #Lấy thông tin user
     token_payload = {
@@ -113,12 +116,14 @@ async def google_callback(request: Request, db: Session = Depends(get_db)):
         print("TOKEN RES BODY:", token_res.text)
 
         if token_res.status_code != 200:
-            raise HTTPException(400, f"Đổi token thất bại: {token_res.text}")
+            # raise HTTPException(400, f"Đổi token thất bại: {token_res.text}")
+            raise HTTPException(400 ,"Đăng nhập thất bại ")
 
         token_json = token_res.json()
         access_token = token_json.get("access_token")
         if not access_token:
-            raise HTTPException(400, f"Thiếu access_token từ Google: {token_json}")
+            # raise HTTPException(400, f"Thiếu access_token từ Google: {token_json}")
+            raise HTTPException(400 ,"Đăng nhập thất bại ")
 
         ui_res = await client.get(
             GOOGLE_USERINFO_URL,
@@ -127,7 +132,8 @@ async def google_callback(request: Request, db: Session = Depends(get_db)):
         print("USERINFO RES CODE:", ui_res.status_code)
         print("USERINFO RES BODY:", ui_res.text)
         if ui_res.status_code != 200:
-            raise HTTPException(400, f"Lấy userinfo thất bại: {ui_res.text}")
+            # raise HTTPException(400, f"Lấy userinfo thất bại: {ui_res.text}")
+            raise HTTPException(400 ,"Đăng nhập thất bại ")
         ui = ui_res.json()
 
     google_sub = ui.get("sub")
