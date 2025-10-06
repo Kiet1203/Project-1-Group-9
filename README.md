@@ -1,6 +1,6 @@
 # Web Tóm Tắt Văn Bản
 
-Ứng dụng web tóm tắt văn bảnh
+Ứng dụng web tóm tắt văn bản
 
 ## Yêu cầu hệ thống
 - Python 3.11 (khuyến nghị dùng Python 3.11.x)
