@@ -81,16 +81,19 @@ async def github_callback(
     db: Session = Depends(get_db),
 ):
     if not code or not state:
-        raise HTTPException(400, "Thiếu code/state")
+        # raise HTTPException(400, "Thiếu code/state")
+        raise HTTPException(400 ,"Đăng nhập thất bại ")
 
     oauth_map: dict = request.session.get("oauth_map", {})
     entry = oauth_map.get(state)
     if entry is None:
-        raise HTTPException(400, "State không hợp lệ/expired")
+        # raise HTTPException(400, "State không hợp lệ/expired")
+        raise HTTPException(400 ,"Đăng nhập thất bại ")
 
     verifier = entry.get("verifier") if USE_PKCE else None
     if USE_PKCE and not verifier:
-        raise HTTPException(400, "Thiếu code_verifier (session/PKCE)")
+        # raise HTTPException(400, "Thiếu code_verifier (session/PKCE)")
+        raise HTTPException(400 ,"Đăng nhập thất bại ")
 
     token_payload = {
         "client_id": settings.GITHUB_CLIENT_ID,
