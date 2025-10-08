@@ -1,6 +1,7 @@
-import { Clipboard, Sparkles } from "lucide-react";
+import { Sparkles, Download } from "lucide-react";
 import { useState } from "react";
 import OutputPanel from "./OutputPanel";
+import UpLoadFile from "./UpLoadFile";
 import "../../styles/inputPanel.css";
 
 export default function InputPanel() {
@@ -36,13 +37,15 @@ export default function InputPanel() {
               </div>
 
               <div className="ip-help">
-                <span className="ip-hint">💡 Hỗ trợ tối đa {maxChars.toLocaleString()} ký tự</span>
+                <span className="ip-hint">
+                  💡 Hỗ trợ tối đa {maxChars.toLocaleString()} ký tự</span>
                 <span className="ip-count">
                   {inputText.length.toLocaleString()} / {maxChars.toLocaleString()}
                 </span>
               </div>
 
               <div className="ip-actions">
+                <UpLoadFile />
                 <button type="button" className="ip-primary">
                   <Sparkles className="ip-icon" />
                   <span>Tóm tắt</span>
@@ -57,7 +60,17 @@ export default function InputPanel() {
                 <span className="ip-label-dot ip-label-dot-purple" />
                 Kết quả tóm tắt
               </label>
+
               <OutputPanel />
+
+              <div className="ip-actions">
+                <button
+                  className="ip-download"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Tải xuống</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
