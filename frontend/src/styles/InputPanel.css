@@ -3,29 +3,85 @@
 @tailwind utilities;
 
 @layer components {
-  .ip-panel {
-    @apply flex justify-between gap-8 max-w-7xl mx-auto px-6 mt-8;
+  .ip-page {
+    @apply min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100
+         pt-4 pb-10 px-4;
   }
 
-  .ip-wrap {
-    @apply w-1/2 min-h-[500px];
+  .ip-container { @apply max-w-7xl mx-auto; }
+
+  .ip-hero { @apply text-center mb-4; }
+  .ip-hero-row { @apply inline-flex items-center gap-2 mb-3; }
+  .ip-hero-icon { @apply w-8 h-8 text-indigo-600; }
+  .ip-title { @apply text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent; }
+  .ip-subtitle { @apply text-gray-600 text-sm; }
+
+  .ip-panel { @apply flex flex-col lg:flex-row justify-between gap-6; }
+  .ip-wrap { @apply w-full lg:w-1/2 flex-shrink-0; }
+
+  .ip-card {
+    @apply relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border p-8
+           transition-all duration-500 hover:shadow-2xl hover:bg-white/90;
+    border-color: rgba(255,255,255,.5);
+  }
+  .ip-card-output { @apply bg-gradient-to-br from-white/80 to-indigo-50/30; }
+
+  .ip-label { @apply flex items-center gap-3 mb-5 text-lg font-bold text-gray-800 tracking-tight; }
+  .ip-label-dot {
+    @apply w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500;
+    box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+    animation: ipSoftPulse 1.8s ease-in-out infinite;
+  }
+  .ip-label-dot-purple {
+    background-image: linear-gradient(to right, #a855f7, #ec4899);
+    box-shadow: 0 0 0 3px rgba(168,85,247,.15);
   }
 
-  .ip-label {
-    @apply mb-2 block text-base font-semibold text-gray-800;
-  }
+  .ip-field { @apply mb-4; }
 
   .ip-textarea {
-    @apply w-full h-[420px] resize-none
-           rounded-2xl border-[2px] border-gray-200 bg-white
-           px-5 py-4 text-[16px] leading-7 text-gray-900
-           placeholder:text-gray-500
-           shadow-[0_2px_8px_rgba(0,0,0,0.05)]
-           outline-none transition-all duration-200
-           focus:border-indigo-400 focus:ring-4 focus:ring-indigo-200/60;
+    @apply w-full h-[380px] resize-none rounded-2xl
+           border-2 border-gray-200 bg-gradient-to-br from-white to-gray-50/30
+           px-5 py-4 text-base leading-relaxed text-gray-900 placeholder:text-gray-400
+           shadow-inner outline-none transition-all duration-300 ease-out
+           focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 focus:bg-white;
+  }
+  .ip-textarea:hover { @apply border-gray-300 shadow-md; }
+
+  .ip-output-area {
+    @apply w-full min-h-[380px] rounded-2xl
+           border-2 border-dashed border-indigo-200/60
+           bg-gradient-to-br from-indigo-50/30 to-purple-50/20
+           px-5 py-4 flex items-center justify-center;
   }
 
-  .ip-textarea:hover {
-    @apply border-gray-300 shadow-[0_4px_12px_rgba(0,0,0,0.06)];
+
+  .ip-help { @apply mt-3 flex items-center justify-between text-xs font-medium; }
+  .ip-hint { @apply text-gray-500; }
+  .ip-count { @apply tabular-nums text-gray-600 px-3 py-1 rounded-full bg-gray-100/80; }
+
+  .ip-actions { @apply flex justify-end gap-3 mt-1; }
+  .ip-icon { @apply w-4 h-4; }
+
+  .ip-primary {
+    @apply inline-flex items-center gap-2 rounded-xl
+           bg-gradient-to-r from-indigo-600 to-purple-600
+           px-6 py-3 text-sm font-bold text-white
+           shadow-lg transition-all duration-300
+           hover:shadow-xl hover:scale-105 hover:-translate-y-0.5
+           active:scale-100 active:translate-y-0
+           focus:ring-4 focus:ring-indigo-300/50
+           disabled:opacity-50 disabled:cursor-not-allowed;
   }
+
+  .ip-paste{
+    @apply inline-flex items-center gap-2 px-5 py-3
+           rounded-xl border-2 border-gray-200 bg-white
+           text-sm font-semibold text-gray-700 shadow-md
+           transition-all duration-300
+           hover:shadow-lg hover:scale-105 hover:-translate-y-0.5
+           active:scale-100 active:translate-y-0;
+  }
+  .ip-paste { @apply hover:border-indigo-300 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 hover:text-indigo-700 focus:ring-4 focus:ring-indigo-200/50; }
 }
+
