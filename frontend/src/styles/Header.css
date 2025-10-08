@@ -18,7 +18,6 @@
 
   .logo-container { @apply relative; }
 
-  /* ← bỏ 'group' khỏi @apply */
   .logo { @apply flex items-center space-x-3 cursor-pointer; }
 
   .logo-badge {

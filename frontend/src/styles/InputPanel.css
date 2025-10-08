@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .ip-panel {
+    @apply flex justify-between gap-8 max-w-7xl mx-auto px-6 mt-8;
+  }
+
+  .ip-wrap {
+    @apply w-1/2 min-h-[500px];
+  }
+
+  .ip-label {
+    @apply mb-2 block text-base font-semibold text-gray-800;
+  }
+
+  .ip-textarea {
+    @apply w-full h-[420px] resize-none
+           rounded-2xl border-[2px] border-gray-200 bg-white
+           px-5 py-4 text-[16px] leading-7 text-gray-900
+           placeholder:text-gray-500
+           shadow-[0_2px_8px_rgba(0,0,0,0.05)]
+           outline-none transition-all duration-200
+           focus:border-indigo-400 focus:ring-4 focus:ring-indigo-200/60;
+  }
+
+  .ip-textarea:hover {
+    @apply border-gray-300 shadow-[0_4px_12px_rgba(0,0,0,0.06)];
+  }
+}

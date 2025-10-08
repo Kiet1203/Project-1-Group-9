@@ -1,0 +1,33 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  .output-panel {
+    @apply flex flex-col h-full;
+  }
+
+  .output-label {
+    @apply mb-2 block text-base font-semibold text-gray-800;
+  }
+
+  .output-container {
+    @apply mb-4 flex-grow;
+  }
+
+  .output-box {
+    @apply w-full min-h-[420px] rounded-2xl border-[2px] border-gray-200 bg-gray-50
+           px-5 py-4 text-[15px] leading-7 text-gray-900
+           placeholder:text-gray-500 shadow-inner
+           outline-none transition-all duration-200;
+  }
+
+  .output-box:hover {
+    @apply border-gray-300 shadow-[0_4px_12px_rgba(0,0,0,0.06)];
+  }
+
+  .output-box:focus-within {
+    @apply border-indigo-400 ring-4 ring-indigo-200/60;
+  }
+}
