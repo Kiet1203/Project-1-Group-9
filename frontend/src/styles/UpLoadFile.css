@@ -12,4 +12,7 @@
            active:scale-100 active:translate-y-0
            mr-auto;
   }
+  .ip-icon {
+    @apply w-4 h-4;
+  }
 }

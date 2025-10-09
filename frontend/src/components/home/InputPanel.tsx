@@ -45,7 +45,7 @@ export default function InputPanel() {
               </div>
 
               <div className="ip-actions">
-                <UpLoadFile />
+                <UpLoadFile onFileLoaded={setInputText} />
                 <button type="button" className="ip-primary">
                   <Sparkles className="ip-icon" />
                   <span>Tóm tắt</span>
