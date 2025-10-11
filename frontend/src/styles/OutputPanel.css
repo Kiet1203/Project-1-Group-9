@@ -1,0 +1,13 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .ip-output-area {
+    @apply w-full min-h-[380px]
+           rounded-2xl border-2 border-dashed border-indigo-200/60
+           bg-gradient-to-br from-indigo-50/30 to-purple-50/20
+           px-5 py-4 flex items-center justify-center;
+  }
+  .ip-output-placeholder { @apply text-gray-500 text-center; }
+}
